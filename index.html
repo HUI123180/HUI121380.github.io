@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferya的个人简介</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+</head>
+<body>
+<div class="background" id="background">
+    <div class="intro-text">这里是Ferya，感谢您的青睐。</div>
+    <div class="nav">
+        <div class="nav-item" id="home">首页</div>
+        <div class="nav-item" id="contact">联系方式</div>
+        <div class="nav-item" id="portfolio">作品集</div>
+        <div class="nav-item" id="about">关于</div>
+    </div>
+</div>
+
+<!-- 音乐播放按钮 -->
+<div class="music-button" id="music-button">
+    <img src="GB.png" alt="音乐播放按钮" id="music-icon">
+</div>
+
+<!-- 添加背景音乐 -->
+<audio id="background-music" loop>
+    <source src="BGM.mp3" type="audio/mpeg">
+    您的浏览器不支持音频元素。
+</audio>
+
+<!-- 个人简介弹窗 -->
+<div class="popup" id="popup-profile">
+    <div class="tab" id="tab-profile">个人简介</div>
+    <div class="tab-content" id="profile">
+        <img src="GRZP.png" alt="Ferya的照片" class="profile-pic">
+        <p>男，现年22岁。<br>兴趣广泛，喜欢学习新技能，对新事物充满好奇，性格谦逊含蓄，
+            <br>对工作认真负责，拥有十足的耐心面对各种工作。<br>善于沟通，贴近用户，在工作和学习过程中有很强的学习能力。</p>
+    </div>
+</div>
+
+<!-- 能力简介弹窗 -->
+<div class="popup" id="popup-abilities">
+    <div class="tab" id="tab-abilities">能力简介</div>
+    <div class="tab-content" id="abilities">
+        <div class="abilities-content">
+            <div class="abilities-text">
+                <h2>About me &nbsp;&nbsp; What can I do</h2>
+                <p>· 后期处理<br>· 摄影摄像<br>· 才艺双修<br>· 脚本编写<br>· 善于沟通<br>· 熟悉互联网<br>· 日常办公处理</p>
+            </div>
+            <div class="abilities-details">
+                <p>1. 熟练使用PS、PR等后期软件；<br>
+                   2. 熟悉互联网，善于使用各种工具，包括AIGC内容，以便完成工作目的，熟练使用办公软件；<br>
+                   3. 拥有一定的手绘能力，英语听说读写能力；<br>
+                   4. 摄影基础，日语基础，3D建模基础，舞蹈基础，音乐基础；<br>
+                   5. 能够辅助使用LR和剪映，以及AE、AN、AU、blender等软件，对于相关工作得心应手；<br>
+                   6. 熟练使用Python及其标准库、Django框架Flask框架；<br>
+                   7. 熟悉HTML、CSS、JavaScript前端技术，MySQL、Redis数据库；<br>
+                   8. 熟悉TikTok，YouTube，X，Ins，Facebook，亚马逊，乐天等海外平台。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 教育经历弹窗 -->
+<div class="popup" id="popup-education">
+    <div class="tab" id="tab-education">教育经历</div>
+    <div class="tab-content" id="education">
+        <img src="JYJL.jpg" alt="教育经历图片" class="profile-pic">
+        <div class="education-details education-text">
+            <p>毕业院校：新乡医学院三全学院<br>
+               第一学历：本科<br>
+               专业：数据科学与大数据技术<br>
+               毕业时间：2024/06<br>
+               在校经历：<br>
+               2022.03 – 2022.06 跟随我校党委宣传老师的团队,参与完成“新乡市社科联调研课题‘新媒体时代下泛娱乐思潮在大学生群体中的传播路径及引导策略’”项目,主要负责数据可视化功能,并参与了部分数据清洗的算法设计. <br>
+               2022.03 – 2022.11 共获省级以上奖项两次，校级科研奖项三次，其他奖项一次.其中作为项目带头人，分别在“第八届全国大学生基础医学创新研究暨实验设计论坛”及“全国大学生智能技术应用大赛”中荣获优秀奖及三等奖.<br>
+               2020.10 – 2021.04 于新乡医学院三全学院大学生新闻中心学习期间，精通Ps、Pr、Lr等办公图像处理软件，荣获团体奖一次.<br>
+               2021.09 – 2022.05 新乡医学院三全学院中医协会社团(校级) 会长<br>
+               2022.09 – 2023.05 新乡医学院三全学院智行书院学生会（院级） 网络宣传部副部长<br>
+               2021.09 – 2022.03 新乡医学院三全学院文工团（校级） 干事<br>
+               2020.09 – 2023.05 新乡医学院三全学院数据科学与大数据技术73班 优秀志愿服务对象<br>
+               </p>
+        </div>
+    </div>
+</div>
+
+<!-- 工作经验弹窗 -->
+<div class="popup" id="popup-experience">
+    <div class="tab" id="tab-experience">工作经验</div>
+    <div class="tab-content" id="experience">
+        <img src="ZOKJ.jpg" alt="工作经验图片" class="experience-pic">
+        <div class="experience-details">
+            <p>实习公司名称：致欧家具科技股份有限公司<br>
+               工作职务：平面设计实习生，设计师助理<br>
+               时间：2023/06-2024/03<br>
+               职责内容：<br>
+               ① 产品图片处理<br>
+               ② 3D图片处理<br>
+               ③ AIGC图片合成<br>
+               ④ SBA PORT广告图合成<br>
+               ⑤ 产品模特，辅助摄影师影棚拍摄工作<br>
+               ⑥ 日常工作信息拉通，实习生工作内容审核<br>
+               ⑦ 部分外包回图审核处理，添加多国文案
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- 作品展示弹窗 -->
+<div class="popup" id="popup-portfolio">
+    <div class="tab" id="tab-portfolio">作品展示</div>
+    <div class="tab-content" id="portfolio">
+        <div class="portfolio-text">产品图片处理</div>
+        <div class="portfolio-pic-container">
+            <div class="portfolio-pic-wrapper">
+                <img src="CPTP.png" alt="产品图片处理" class="portfolio-pic">
+                <div id="3d-viewer" class="viewer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 联系方式弹窗 -->
+<div class="modal" id="contact-modal">
+    <div class="modal-content">
+        <span class="close" id="close-contact">&times;</span>
+        <p>电话：+86 16638359119<br>邮箱：981259744@qq.com<br>微信：Ferya-bye</p>
+    </div>
+</div>
+
+<!-- 关于弹窗 -->
+<div class="modal" id="about-modal">
+    <div class="modal-content">
+        <span class="close" id="close-about">&times;</span>
+        <p>声明：本页面涉及的一切模型，代码，PSD，音视频，图片均有留档，包括此页面的所有元素，均为原创，侵权必究。（BGM：早操 -周杰伦）</p>
+    </div>
+</div>
+
+<script>
+    const tabProfile = document.getElementById('tab-profile');
+    const tabAbilities = document.getElementById('tab-abilities');
+    const tabEducation = document.getElementById('tab-education');
+    const tabExperience = document.getElementById('tab-experience');
+    const tabPortfolio = document.getElementById('tab-portfolio');
+    const popupProfile = document.getElementById('popup-profile');
+    const popupAbilities = document.getElementById('popup-abilities');
+    const popupEducation = document.getElementById('popup-education');
+    const popupExperience = document.getElementById('popup-experience');
+    const popupPortfolio = document.getElementById('popup-portfolio');
+    const background = document.getElementById('background');
+    const viewer = document.getElementById('3d-viewer');
+    const contactModal = document.getElementById('contact-modal');
+    const aboutModal = document.getElementById('about-modal');
+    const closeContact = document.getElementById('close-contact');
+    const closeAbout = document.getElementById('close-about');
+    const home = document.getElementById('home');
+    const contact = document.getElementById('contact');
+    const portfolio = document.getElementById('portfolio');
+    const about = document.getElementById('about');
+    const musicButton = document.getElementById('music-button');
+    const musicIcon = document.getElementById('music-icon');
+    const backgroundMusic = document.getElementById('background-music');
+    let isPlaying = true;
+    let timerProfile = null;
+    let timerAbilities = null;
+    let timerEducation = null;
+    let timerExperience = null;
+    let timerPortfolio = null;
+    let canShowPopupProfile = true;
+    let canShowPopupAbilities = true;
+    let canShowPopupEducation = true;
+    let canShowPopupExperience = true;
+    let canShowPopupPortfolio = true;
+
+    // 设置默认选中项
+    home.classList.add('selected');
+
+    // 刷新页面
+    home.addEventListener('click', () => {
+        location.reload();
+    });
+
+    // 显示联系方式弹窗
+    contact.addEventListener('click', () => {
+        contactModal.style.display = 'block';
+    });
+
+    // 显示关于弹窗
+    about.addEventListener('click', () => {
+        aboutModal.style.display = 'block';
+    });
+
+    // 关闭联系方式弹窗
+    closeContact.addEventListener('click', () => {
+        contactModal.style.display = 'none';
+    });
+
+    // 关闭关于弹窗
+    closeAbout.addEventListener('click', () => {
+        aboutModal.style.display = 'none';
+    });
+
+    // 点击非弹窗区域关闭弹窗
+    window.addEventListener('click', (event) => {
+        if (event.target === contactModal) {
+            contactModal.style.display = 'none';
+        }
+        if (event.target === aboutModal) {
+            aboutModal.style.display = 'none';
+        }
+    });
+
+    // 打开作品集PDF
+    portfolio.addEventListener('click', () => {
+        window.open('ZPJ.pdf', '_blank');
+    });
+
+   // 音乐播放按钮点击事件
+    musicButton.addEventListener('click', () => {
+    if (isPlaying) {
+        backgroundMusic.pause();
+        musicButton.classList.remove('rotating');
+        musicIcon.src = 'GB.png'; // 切换为停止播放的图片
+    } else {
+        backgroundMusic.play();
+        musicButton.classList.add('rotating');
+        musicIcon.src = 'YY.png'; // 切换为播放的图片
+    }
+    isPlaying = !isPlaying;
+});
+
+    // 音乐播放按钮鼠标悬停事件
+    musicButton.addEventListener('mouseover', () => {
+        musicButton.classList.remove('rotating');
+    });
+
+    // 音乐播放按钮鼠标离开事件
+    musicButton.addEventListener('mouseout', () => {
+        if (isPlaying) {
+            musicButton.classList.add('rotating');
+        }
+    });
+
+    // 背景音乐渐出
+    backgroundMusic.addEventListener('ended', () => {
+        let volume = 0.1; // 设置初始音量为60%
+        const fadeOut = setInterval(() => {
+            if (volume > 0) {
+                volume -= 0.01;
+                backgroundMusic.volume = volume;
+            } else {
+                clearInterval(fadeOut);
+                backgroundMusic.play();
+            }
+        }, 100);
+    });
+
+    // 显示个人简介弹窗
+    tabProfile.addEventListener('mouseover', () => {
+        if (canShowPopupProfile) {
+            clearTimeout(timerProfile);
+            popupProfile.classList.add('show');
+        }
+    });
+
+    // 显示能力简介弹窗
+    tabAbilities.addEventListener('mouseover', () => {
+        if (canShowPopupAbilities) {
+            clearTimeout(timerAbilities);
+            popupAbilities.classList.add('show');
+        }
+    });
+
+    // 显示教育经历弹窗
+    tabEducation.addEventListener('mouseover', () => {
+        if (canShowPopupEducation) {
+            clearTimeout(timerEducation);
+            popupEducation.classList.add('show');
+        }
+    });
+
+    // 显示工作经验弹窗
+    tabExperience.addEventListener('mouseover', () => {
+        if (canShowPopupExperience) {
+            clearTimeout(timerExperience);
+            popupExperience.classList.add('show');
+        }
+    });
+
+    // 显示作品展示弹窗
+    tabPortfolio.addEventListener('mouseover', () => {
+        if (canShowPopupPortfolio) {
+            clearTimeout(timerPortfolio);
+            popupPortfolio.classList.add('show');
+        }
+    });
+
+    // 鼠标悬停在个人简介弹窗上时不隐藏
+    popupProfile.addEventListener('mouseover', () => {
+        if (canShowPopupProfile) {
+            clearTimeout(timerProfile);
+        }
+    });
+
+    // 鼠标悬停在能力简介弹窗上时不隐藏
+    popupAbilities.addEventListener('mouseover', () => {
+        if (canShowPopupAbilities) {
+            clearTimeout(timerAbilities);
+        }
+    });
+
+    // 鼠标悬停在教育经历弹窗上时不隐藏
+    popupEducation.addEventListener('mouseover', () => {
+        if (canShowPopupEducation) {
+            clearTimeout(timerEducation);
+        }
+    });
+
+    // 鼠标悬停在工作经验弹窗上时不隐藏
+    popupExperience.addEventListener('mouseover', () => {
+        if (canShowPopupExperience) {
+            clearTimeout(timerExperience);
+        }
+    });
+
+    // 鼠标悬停在作品展示弹窗上时不隐藏
+    popupPortfolio.addEventListener('mouseover', () => {
+        if (canShowPopupPortfolio) {
+            clearTimeout(timerPortfolio);
+        }
+    });
+
+    // 鼠标悬停在背景上时隐藏弹窗
+    background.addEventListener('mouseover', hidePopup);
+
+    function hidePopup() {
+        canShowPopupProfile = false;
+        canShowPopupAbilities = false;
+        canShowPopupEducation = false;
+        canShowPopupExperience = false;
+        canShowPopupPortfolio = false;
+        popupProfile.classList.remove('show');
+        popupAbilities.classList.remove('show');
+        popupEducation.classList.remove('show');
+        popupExperience.classList.remove('show');
+        popupPortfolio.classList.remove('show');
+        timerProfile = setTimeout(() => {
+            canShowPopupProfile = true;
+        }, 10); // 10毫秒后再次允许弹窗被触发
+        timerAbilities = setTimeout(() => {
+            canShowPopupAbilities = true;
+        }, 10); // 10毫秒后再次允许弹窗被触发
+        timerEducation = setTimeout(() => {
+            canShowPopupEducation = true;
+        }, 10); // 10毫秒后再次允许弹窗被触发
+        timerExperience = setTimeout(() => {
+            canShowPopupExperience = true;
+        }, 10); // 10毫秒后再次允许弹窗被触发
+        timerPortfolio = setTimeout(() => {
+            canShowPopupPortfolio = true;
+        }, 10); // 10毫秒后再次允许弹窗被触发
+    }
+
+    // 页面加载时显示内容
+    document.addEventListener('DOMContentLoaded', () => {
+    // 设置背景音乐默认音量
+    backgroundMusic.volume = 0.6;
+
+    showContent('profile');
+    showContent('abilities');
+    showContent('education');
+    showContent('experience');
+    showContent('portfolio');
+    cycleExperienceContent(); // 调用工作经验内容轮播函数
+    cyclePortfolioContent(); // 调用作品展示内容轮播函数
+});
+
+
+    // 显示选定的内容
+    function showContent(contentId) {
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => {
+            content.style.display = 'block';
+        });
+
+        const activeContent = document.getElementById(contentId);
+        if (activeContent) {
+            activeContent.style.display = 'block';
+        }
+    }
+
+    // 循环显示工作经验内容
+    function cycleExperienceContent() {
+        const experiencePic = document.querySelector('.experience-pic');
+        const experienceDetails = document.querySelector('.experience-details p');
+        const experienceData = [
+            {
+                img: 'ZOKJ.jpg',
+                text: '实习公司名称：致欧家具科技股份有限公司<br>工作职务：平面设计实习生，设计师助理<br>时间：2023/06-2024/03<br>职责内容：<br>① 产品图片处理<br>② 3D图片处理<br>③ AIGC图片合成<br>④ SBA PORT广告图合成<br>⑤ 产品模特，辅助摄影师影棚拍摄工作<br>⑥ 日常工作信息拉通，实习生工作内容审核<br>⑦ 部分外包回图审核处理，添加多国文案'
+            },
+            {
+                img: 'HXJYJ.png',
+                text: '工作地点：滑县教育局<br>工作性质：志愿服务<br>时间：2022/08-2022/09<br>工作内容：整理文档，统计数据，图片处理'
+            },
+            {
+                img: 'JYJL.jpg',
+                text: '工作地点：新乡医学院三全学院<br>工作性质：学生工作<br>时间：2020/09-2023/05<br>工作内容：整理文档，图片处理，视频剪辑，公众号管理'
+            }
+        ];
+
+        let currentIndex = 0;
+
+        setInterval(() => {
+            experiencePic.classList.add('fade-out');
+            experienceDetails.classList.add('fade-out');
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % experienceData.length;
+                experiencePic.src = experienceData[currentIndex].img;
+                experienceDetails.innerHTML = experienceData[currentIndex].text;
+
+                experiencePic.classList.remove('fade-out');
+                experienceDetails.classList.remove('fade-out');
+                experiencePic.classList.add('fade-in');
+                experienceDetails.classList.add('fade-in');
+
+                setTimeout(() => {
+                    experiencePic.classList.remove('fade-in');
+                    experienceDetails.classList.remove('fade-in');
+                }, 2000); // 2秒后移除fade-in类
+            }, 2000); // 2秒后切换内容
+        }, 6000); // 每6秒循环一次
+    }
+
+    // 循环显示作品展示内容
+    function cyclePortfolioContent() {
+        const portfolioText = document.querySelector('.portfolio-text');
+        const portfolioPicContainer = document.querySelector('.portfolio-pic-container');
+        const portfolioData = [
+            { text: '产品图片处理', img: 'CPTP.png', duration: 3000 },
+            { text: '3D图片处理', img: '3d.png', duration: 3000 },
+            { text: 'AIGC图片合成-多图合成', img: 'AIGC-2.png', duration: 3000 },
+            { text: 'AIGC图片合成-创成合成', img: 'AIGC.png', duration: 3000 },
+            { text: 'AIGC图片合成-素材生成', img: 'AIGC-3.png', duration: 3000 },
+            { text: 'SBA PORT广告图设计', img: 'GG.png', duration: 3000 },
+            { text: '手（板）绘', img: 'SH.png', duration: 3000 },
+            { text: '图标设计', img: 'TB.png', duration: 3000 },
+            { text: '图标动画', img: ['3.gif', '2.gif', '4.gif', '1.gif'], duration: 3000 },
+            { text: '3D建模-卡通药店', img: '3D-1.png', duration: 3000 },
+            { text: '3D建模-置物架', img: '3D-2.png', duration: 3000 },
+            { text: '模特拍摄 摄影辅助', img: 'SY.png', duration: 3000 },
+            { text: '其他类型', img: '123.png', duration: 3000 } // 新增内容
+        ];
+
+        let currentIndex = 0;
+
+        function showNextContent() {
+            portfolioText.classList.add('fade-out');
+            portfolioPicContainer.classList.add('fade-out');
+
+            setTimeout(() => {
+                if (Array.isArray(portfolioData[currentIndex].img)) {
+                    portfolioText.textContent = portfolioData[currentIndex].text;
+                    portfolioPicContainer.innerHTML = portfolioData[currentIndex].img.map(img => `<img src="${img}" class="portfolio-gif">`).join('');
+                } else {
+                    portfolioText.textContent = portfolioData[currentIndex].text;
+                    portfolioPicContainer.innerHTML = `<div class="portfolio-pic-wrapper"><img src="${portfolioData[currentIndex].img}" class="portfolio-pic"><div id="3d-viewer" class="viewer"></div></div>`;
+                }
+
+                portfolioText.classList.remove('fade-out');
+                portfolioPicContainer.classList.remove('fade-out');
+                portfolioText.classList.add('fade-in');
+                portfolioPicContainer.classList.add('fade-in');
+
+                setTimeout(() => {
+                    portfolioText.classList.remove('fade-in');
+                    portfolioPicContainer.classList.remove('fade-in');
+                    setTimeout(showNextContent, 2000); // 2秒后显示下一个内容
+                }, portfolioData[currentIndex].duration);
+            }, 2000); // 2秒后切换内容
+
+            currentIndex = (currentIndex + 1) % portfolioData.length;
+        }
+
+        showNextContent();
+    }
+
+    // 为3D模型设置鼠标悬停功能
+    document.addEventListener('mouseover', (event) => {
+        if (event.target.classList.contains('portfolio-pic')) {
+            if (event.target.src.includes('3D-1.png')) {
+                load3DModel('Building (5).blend');
+            } else if (event.target.src.includes('3D-2.png')) {
+                load3DModel('zhiwujia5.glb');
+            }
+        }
+    });
+
+    document.addEventListener('mouseout', (event) => {
+        if (event.target.classList.contains('portfolio-pic')) {
+            if (event.target.src.includes('3D-1.png')) {
+                event.target.src = '3D-1.png';
+                viewer.style.display = 'none';
+            } else if (event.target.src.includes('3D-2.png')) {
+                event.target.src = '3D-2.png';
+                viewer.style.display = 'none';
+            }
+        }
+    });
+
+    function load3DModel(modelPath) {
+        viewer.style.display = 'block';
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, viewer.clientWidth / viewer.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+        viewer.innerHTML = '';
+        viewer.appendChild(renderer.domElement);
+
+        const loader = new THREE.GLTFLoader();
+        loader.load(modelPath, function (gltf) {
+            scene.add(gltf.scene);
+            camera.position.z = 5;
+            const animate = function () {
+                requestAnimationFrame(animate);
+                gltf.scene.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            };
+            animate();
+        }, undefined, function (error) {
+            console.error(error);
+        });
+    }
+</script>
+</body>
+</html>
