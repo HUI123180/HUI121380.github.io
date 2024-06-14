@@ -1,0 +1,321 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(125deg, #2c3e50, #27ae60, #2980b9, #e74c3c, #8e44ad);
+    background-size: 400%;
+    animation: bganimation 15s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes bganimation {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.intro-text {
+    color: white;
+    font-size: 4em;
+    opacity: 0;
+    animation: textFadeIn 3s forwards, textFadeOut 5s 5s forwards;
+}
+
+@keyframes textFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes textFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.popup {
+    position: absolute;
+    bottom: -80%;
+    width: 90%;
+    height: 80%;
+    border-radius: 8px;
+    padding: 20px;
+    transition: bottom 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup.show {
+    bottom: 0%;
+}
+
+#popup-profile {
+    background: rgba(51, 147, 156, 0.9); /* 使用RGB的33939c颜色，90%透明度 */
+}
+
+#popup-abilities {
+    background: rgba(210, 170, 190, 0.9); /* 使用RGB的fff8ad颜色，90%透明度 */
+}
+
+#popup-education {
+    background: rgba(215, 120, 115, 0.9); /* 使用RGB的d76fea颜色，90%透明度 */
+}
+
+#popup-experience {
+    background: rgba(85, 161, 92, 0.9); /* 使用RGB的55a15c颜色，90%透明度 */
+}
+
+#popup-portfolio {
+    background: rgba(198, 81, 68, 0.9); /* 使用RGB的c65144颜色，90%透明度 */
+}
+
+.tab {
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    cursor: pointer;
+    padding: 20px  40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+#tab-abilities {
+    left: 175px; /* 调整位置以确保两个标签不重叠 */
+}
+
+#tab-education {
+    left: 330px; /* 调整位置以确保三个标签不重叠 */
+}
+
+#tab-experience {
+    left: 485px; /* 调整位置以确保四个标签不重叠 */
+}
+
+#tab-portfolio {
+    left: 640px; /* 调整位置以确保五个标签不重叠 */
+}
+
+.tab:hover {
+    background: #ddd;
+}
+
+.tab-content {
+    display: block; /* 确保默认显示内容 */
+    font-size: 1.4em;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: white; /* 修改颜色为白色以确保可见性 */
+}
+
+.profile-pic, .experience-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, border-radius 0.3s ease;
+}
+
+.profile-pic:hover, .experience-pic:hover {
+    transform: translateX(0px) scale(1.2);
+    width: 250px;
+    height: 250px;
+    border-radius: 10%;
+}
+
+.portfolio-pic {
+    width: 70%; /* 默认设置为70%以确保图片可以全部展示 */
+    height: auto; /* 高度自动调整 */
+    border-radius: 0; /* 去掉圆形约束 */
+    object-fit: contain; /* 确保图片内容全部展示 */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.portfolio-pic[src="AIGC-3.png"] {
+    width: 60%; /* 设置为60%以确保图片可以全部展示 */
+}
+
+.portfolio-pic[src="AIGC-2.png"] {
+    width: 150%; /* 设置为150%以确保图片可以全部展示 */
+    margin-left: auto; /* 自动调整左边距 */
+    margin-right: auto; /* 自动调整右边距 */
+    display: block; /* 确保图片是块级元素 */
+    transform: translateX(-90px); /* 向左移动30像素 */
+}
+
+.portfolio-gif {
+    width: 20%; /* 设置为20%以确保四宫格展示 */
+    height: auto;
+    margin: 2.5%;
+}
+
+.portfolio-pic-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.viewer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.abilities-text, .abilities-details, .education-details, .experience-details {
+    margin: 10px 0;
+    padding: 20px;
+    background: rgba(42, 88, 76, 0.1); /* 使用颜色#2a584c的透明背景 */
+    border-radius: 8px;
+    text-align: left; /* 确保内容左对齐 */
+}
+
+.abilities-text h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.abilities-text p, .abilities-details p, .education-details p, .experience-details p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.education-text {
+    color: white; /* 设置教育经历文字颜色为白色 */
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+.portfolio-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: white; /* 设置作品展示文字颜色为白色 */
+}
+
+/* 新增的导航栏样式 */
+.nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item {
+    padding: 10px 20px;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nav-item:hover {
+    background: #ddd;
+}
+
+.nav-item.selected {
+    background: #bbb;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe; /* 设置弹窗内容的背景颜色为乳白色 */
+    margin: 15% auto; /* 设置弹窗内容的外边距，垂直方向为15%，水平方向为自动居中 */
+    padding: 50px; /* 设置弹窗内容的内边距为50像素 */
+    border: 1px solid #888; /* 设置弹窗内容的边框，宽度为1像素，颜色为灰色 */
+    width: 50%; /* 设置弹窗内容的宽度为50% */
+    border-radius: 10px; /* 设置弹窗内容的边框圆角半径为10像素 */
+    font-size: 21px; /* 设置弹窗内容的字体大小 */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 音乐播放按钮样式 */
+.music-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.music-button img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.music-button.rotating {
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
